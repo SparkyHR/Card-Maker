@@ -1,34 +1,41 @@
 # Card-Maker / Pocket Card Studio
 
-Pocket Card Studio is a browser-based editor for creating and printing **2.5 × 3.5 inch cards**.
+Pocket Card Studio is a browser-based editor for designing and printing **2.5 × 3.5-inch cards**.
 
-## Source archive (pending upload)
-The supplied `CardMaker.zip` contains `index.html`, `styles.css`, `script.js`, and `preview.png`. These files are **not yet committed** here; this repository currently has documentation, not a runnable program.
+## Run the program
 
-## Beginner manual (pending upload)
-An eight-page beginner's guide was created during the ChatGPT project conversation in two formats:
-- `Pocket_Card_Studio_Beginners_Guide.docx`
-- `Pocket_Card_Studio_Beginners_Guide.pdf`
+Download the repository files together into one folder, then open `index.html` in a modern web browser. Keep `styles.css` and `script.js` beside `index.html`.
 
-Both files remain in the ChatGPT conversation working files, not this repository.
+## Published source files
 
-## Usage notes
-- **Save** stores card data in the browser, not an independently backed-up file.
-- **Download PNG** exports a picture.
-- **Print** sends card layout to a printer.
-- Clearing browser site data can remove browser-saved cards.
+- `index.html` — editor layout and controls
+- `styles.css` — visual styling and print layout
+- `script.js` — editing, saving, picture handling, exporting and printing
+
+These source files were uploaded from the user's supplied Pocket Card Studio files on November 6, 2026. The screenshot `preview.png` has **not** yet been uploaded.
+
+## Beginner manual
+
+An eight-page beginner's guide was produced in the ChatGPT conversation in Word and PDF formats. These binaries have **not** yet been uploaded to this repository:
+- `docs/Pocket_Card_Studio_Beginners_Guide.docx`
+- `docs/Pocket_Card_Studio_Beginners_Guide.pdf`
+
+## Saving and printing
+
+- **Save** stores editable designs in this browser's local storage.
+- **PNG** downloads a standalone picture of the current card.
+- **Print** prints one 2.5 × 3.5-inch card.
+- **3x3** lays out nine card slots on letter-size paper.
+- Clearing browser site data may delete saved designs.
 
 ## Project history
-See [CardMaker Conversation Notes](docs/CardMaker_Conversation_Notes.md) for the project-specific discussion, manual outline, files, and publication status.
 
-## Planned files
-```
-index.html
-styles.css
-script.js
-preview.png
-docs/
-  CardMaker_Conversation_Notes.md
-  Pocket_Card_Studio_Beginners_Guide.docx
-  Pocket_Card_Studio_Beginners_Guide.pdf
-```
+[CardMaker Conversation Notes](docs/CardMaker_Conversation_Notes.md) describe the project-specific discussion and the guide. They are a summary, not a complete private chat transcript.
+
+## Publication checklist
+
+- [x] Program HTML, CSS, and JavaScript
+- [x] Project-specific conversation summary
+- [ ] `preview.png`
+- [ ] Beginner guide: Word
+- [ ] Beginner guide: PDF
