@@ -14,7 +14,7 @@ The user supplied `CardMaker.zip`. The archive contains:
 | `script.js` | Program functions |
 | `preview.png` | Screenshot / preview |
 
-These source files were inspected for the documentation request. They have not yet been transferred into this repository.
+The program source files `index.html`, `styles.css`, and `script.js` were uploaded to this repository on November 6, 2026. The screenshot `preview.png` is still pending.
 
 ## Conversation: Beginner's how-to manual
 
@@ -38,7 +38,7 @@ The GitHub repository was checked on November 6, 2026. It was empty and public; 
 
 ## Still to publish
 
-- The original four project files from `CardMaker.zip`.
+- The `preview.png` screenshot from `CardMaker.zip`.
 - The beginner manual in `.docx` and `.pdf` formats.
 
 Do not mark the project deployment complete before those files are uploaded and checked.
