@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Pocket Card Studio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="panel tools-panel" aria-label="Card editing controls">
+      <div class="brand-row">
+        <div>
+          <h1>Pocket Card Studio</h1>
+          <p>2.5 x 3.5 in card maker</p>
+        </div>
+        <button class="icon-button" id="resetButton" title="Reset card" aria-label="Reset card">↺</button>
+      </div>
+
+      <section class="control-section">
+        <div class="section-title">Canvas</div>
+        <label>
+          Background
+          <input type="color" id="backgroundColor" value="#f7f1df">
+        </label>
+        <label>
+          Edge
+          <input type="color" id="borderColor" value="#121212">
+        </label>
+        <label>
+          Frame style
+          <select id="frameStyle">
+            <option value="classic">Classic edge</option>
+            <option value="fantasy">Fantasy filigree</option>
+            <option value="dungeon">Dungeon stone</option>
+            <option value="victorian">Victorian ornate</option>
+            <option value="wood">Carved wood</option>
+            <option value="plastic">Glossy plastic</option>
+            <option value="metal">Brushed metal</option>
+            <option value="modern">Modern minimal</option>
+          </select>
+        </label>
+        <label>
+          Upload frame(s)
+          <input type="file" id="customFrameUpload" accept="image/png,image/webp,image/jpeg" multiple>
+        </label>
+        <label>
+          Border width
+          <input type="range" id="borderWidth" min="0" max="12" value="3">
+        </label>
+        <label>
+          Corner radius
+          <input type="range" id="cornerRadius" min="0" max="24" value="10">
+        </label>
+      </section>
+
+      <section class="control-section">
+        <div class="section-title">Text</div>
+        <label>
+          Title
+          <input type="text" id="titleText" value="Field Notes">
+        </label>
+        <label>
+          Subtitle
+          <input type="text" id="subtitleText" value="Custom card">
+        </label>
+        <label>
+          Body
+          <textarea id="bodyText" rows="5">A compact card template for ideas, games, inventory, gifts, study notes, and small keepsakes.</textarea>
+        </label>
+        <label>
+          Footer
+          <input type="text" id="footerText" value="No. 001">
+        </label>
+        <label>
+          Text color
+          <input type="color" id="textColor" value="#171717">
+        </label>
+        <label>
+          Title color
+          <input type="color" id="titleColor" value="#171717">
+        </label>
+        <label>
+          Subtitle color
+          <input type="color" id="subtitleColor" value="#216869">
+        </label>
+        <label>
+          Body color
+          <input type="color" id="bodyColor" value="#171717">
+        </label>
+        <label>
+          Footer color
+          <input type="color" id="footerColor" value="#171717">
+        </label>
+        <label>
+          Font size
+          <input type="range" id="fontScale" min="80" max="130" value="100">
+        </label>
+      </section>
+    </aside>
+
+    <section class="stage-panel" aria-label="Card preview">
+      <div class="top-bar">
+        <div class="template-picker" role="tablist" aria-label="Template">
+          <button class="template-button active" data-template="classic" role="tab" aria-selected="true">Classic</button>
+          <button class="template-button" data-template="split" role="tab" aria-selected="false">Split</button>
+          <button class="template-button" data-template="badge" role="tab" aria-selected="false">Badge</button>
+        </div>
+        <div class="action-row">
+          <button id="addLineButton" title="Add rule" aria-label="Add rule">＋</button>
+          <button id="quickSaveButton" title="Save card" aria-label="Save card">Save</button>
+          <button id="downloadButton" title="Download PNG" aria-label="Download PNG">⇩ PNG</button>
+          <button id="printButton" title="Print" aria-label="Print">⎙ Print</button>
+          <button id="printNineButton" title="Print 9 cards" aria-label="Print 9 cards">3x3</button>
+        </div>
+      </div>
+
+      <div class="workspace">
+        <article class="card-preview classic" id="cardPreview">
+          <header>
+            <p class="eyebrow" id="subtitlePreview">Custom card</p>
+            <h2 id="titlePreview">Field Notes</h2>
+          </header>
+          <div class="art-box" id="artBox">
+            <span id="monogram">FN</span>
+          </div>
+          <p class="body-copy" id="bodyPreview">A compact card template for ideas, games, inventory, gifts, study notes, and small keepsakes.</p>
+          <footer>
+            <span id="footerPreview">No. 001</span>
+            <span>2.5 x 3.5</span>
+          </footer>
+        </article>
+      </div>
+
+      <div class="quick-panel">
+        <button class="swatch" data-bg="#f7f1df" data-accent="#216869" data-text="#171717" style="--swatch-bg:#f7f1df;--swatch-accent:#216869" aria-label="Warm paper"></button>
+        <button class="swatch" data-bg="#f0f6ff" data-accent="#c73e1d" data-text="#151515" style="--swatch-bg:#f0f6ff;--swatch-accent:#c73e1d" aria-label="Bright blue"></button>
+        <button class="swatch" data-bg="#15171a" data-accent="#e2b33c" data-text="#f8f6ed" style="--swatch-bg:#15171a;--swatch-accent:#e2b33c" aria-label="Night gold"></button>
+        <button class="swatch" data-bg="#ffffff" data-accent="#375a7f" data-text="#101010" style="--swatch-bg:#ffffff;--swatch-accent:#375a7f" aria-label="Clean white"></button>
+        <button class="swatch" data-bg="#f8e1da" data-accent="#087e8b" data-text="#181818" style="--swatch-bg:#f8e1da;--swatch-accent:#087e8b" aria-label="Coral teal"></button>
+      </div>
+    </section>
+
+    <aside class="panel inspector-panel" aria-label="Decoration controls">
+      <section class="control-section">
+        <div class="section-title">Saved cards</div>
+        <label>
+          Card name
+          <input type="text" id="cardName" value="Field Notes">
+        </label>
+        <div class="library-actions">
+          <button id="saveCardButton" type="button">Save</button>
+          <button id="newCardButton" type="button">New</button>
+        </div>
+        <div class="save-status" id="saveStatus" aria-live="polite"></div>
+        <div class="saved-card-list" id="savedCardsList"></div>
+      </section>
+
+      <section class="control-section">
+        <div class="section-title">Print sheet</div>
+        <div class="print-slot-grid" id="printSlotGrid">
+          <label>1<select class="print-slot-select" data-slot="1"></select></label>
+          <label>2<select class="print-slot-select" data-slot="2"></select></label>
+          <label>3<select class="print-slot-select" data-slot="3"></select></label>
+          <label>4<select class="print-slot-select" data-slot="4"></select></label>
+          <label>5<select class="print-slot-select" data-slot="5"></select></label>
+          <label>6<select class="print-slot-select" data-slot="6"></select></label>
+          <label>7<select class="print-slot-select" data-slot="7"></select></label>
+          <label>8<select class="print-slot-select" data-slot="8"></select></label>
+          <label>9<select class="print-slot-select" data-slot="9"></select></label>
+        </div>
+      </section>
+
+      <section class="control-section">
+        <div class="section-title">Mark</div>
+        <label>
+          Center letters
+          <input type="text" id="monogramText" value="FN" maxlength="4">
+        </label>
+        <label>
+          Shape
+          <select id="shapeStyle">
+            <option value="circle">Circle</option>
+            <option value="diamond">Diamond</option>
+            <option value="square">Square</option>
+            <option value="none">None</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="control-section">
+        <div class="section-title">Picture</div>
+        <label>
+          Upload image
+          <input type="file" id="imageUpload" accept="image/*">
+        </label>
+        <label>
+          Placement
+          <select id="imagePlacement">
+            <option value="mark">Inside mark</option>
+            <option value="top">Top panel</option>
+            <option value="background">Background</option>
+            <option value="none">Hidden</option>
+          </select>
+        </label>
+        <label>
+          Fit
+          <select id="imageFit">
+            <option value="cover">Cover</option>
+            <option value="contain">Contain</option>
+          </select>
+        </label>
+        <label>
+          Opacity
+          <input type="range" id="imageOpacity" min="20" max="100" value="100">
+        </label>
+        <label>
+          Move picture left/right
+          <input type="range" id="imagePositionX" min="0" max="100" value="50">
+        </label>
+        <label>
+          Move picture up/down
+          <input type="range" id="imagePositionY" min="0" max="100" value="50">
+        </label>
+        <button id="removeImageButton" type="button">Remove image</button>
+      </section>
+
+      <section class="control-section">
+        <div class="section-title">Extras</div>
+        <label class="check-row">
+          <input type="checkbox" id="showGrid">
+          Grid texture
+        </label>
+        <label class="check-row">
+          <input type="checkbox" id="showBleed" checked>
+          Bleed guide
+        </label>
+        <label class="check-row">
+          <input type="checkbox" id="showFooter" checked>
+          Footer
+        </label>
+        <label>
+          Rule count
+          <input type="number" id="ruleCount" min="0" max="8" value="0">
+        </label>
+      </section>
+    </aside>
+  </main>
+
+  <button class="about-button" id="aboutButton" type="button">About</button>
+  <canvas id="exportCanvas" width="750" height="1050" hidden></canvas>
+  <section class="print-sheet" id="printSheet" aria-hidden="true"></section>
+  <script src="script.js"></script>
+</body>
+</html>
